@@ -26,3 +26,27 @@
 1. epub 格式的电子书可以安装 [多看阅读](https://www.duokan.com/product) ,  通过 `wifi传书功能` 通过浏览器将电子书传入到阅读器中, 然后就可以进行阅读;
 2. mobi 格式的电子书需要使用 `kindle设备` 或者在电脑、手机上安装 [kindle 阅读app](https://www.amazon.cn/kindle-dbs/fd/kcp/ref=sv_kinc_0)
 
+-------------------------------------
+## 四、epub 翻译工具（OpenAI Chat Completions API）
+
+仓库内提供一个简单的命令行工具，可以直接读取 epub，并调用 OpenAI API 翻译为中文（或其他语言）。
+
+**使用示例**
+
+```bash
+python3 tools/epub_translate.py 01_economist/te_2026.01.31/TheEconomist.2026.01.31.epub \
+  --output translated.md \
+  --source en \
+  --target zh \
+  --api-key YOUR_OPENAI_API_KEY
+```
+
+**可选参数**
+
+- `--api-key`：OpenAI API Key（也可使用环境变量 `OPENAI_API_KEY`）
+- `--model`：模型名称，默认 `gpt-4o-mini`
+- `--max-chars`：每次请求的最大字符数，默认 1500
+- `--delay`：请求间隔秒数，默认 0.3
+- `--max-sections`：限制翻译的章节数（0 表示全部），默认 0
+
+输出为 markdown 文件，按 epub 的阅读顺序章节拆分。

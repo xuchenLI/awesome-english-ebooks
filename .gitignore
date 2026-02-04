@@ -7,6 +7,8 @@ nohup.out
 03_nature/
 *.bk
 *.py
+!tools/
+!tools/epub_translate.py
 *.txt
 bk/
 *.swn
